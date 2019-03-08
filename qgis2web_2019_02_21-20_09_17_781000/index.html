@@ -49,13 +49,13 @@
               });
             } else {
               highlightLayer.setStyle({
-                fillColor: '#ffff00',
-                fillOpacity: 1
+                fillColor: '#06FAF2',
+                fillOpacity: 0.5
               });
             }
         }
         var map = L.map('map', {
-            zoomControl:true, maxZoom:28, minZoom:1
+            zoomControl:true, maxZoom:20, minZoom:1
         }).fitBounds([[3.35196794898,-76.5982657407],[3.44378472259,-76.4362521881]]);
         var hash = new L.Hash(map);
         map.attributionControl.addAttribution('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a>');
@@ -72,6 +72,10 @@
             maxZoom: 28
         });
         basemap0.addTo(map);
+        var wmsLayer = L.tileLayer.wms('http://ws-idesc.cali.gov.co:8081/geoserver/wms?service=WMS&version=1.1.0', {
+        layers: 'idesc:mc_Barrios'
+        }).addTo(map); 
+            
         function setBounds() {
         }
         function pop_Comunas_0(feature, layer) {
